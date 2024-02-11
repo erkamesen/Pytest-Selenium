@@ -8,6 +8,7 @@ import unittest
 from utils.utils import (get_negative_datas,
                          get_positive_datas)
 
+
 SEARCH_DATA_PATH = "./testdatas/search_datas.csv"
 
 
@@ -40,4 +41,4 @@ class TestSearchPage(unittest.TestCase):
         result_list = self.search_page.get_searched_product_list()
 
         for result in result_list:
-            assert word.lower() in result
+            self.assertIn(word.lower(), result)
