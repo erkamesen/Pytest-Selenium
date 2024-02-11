@@ -8,7 +8,6 @@ from pages.product_detail_page import DetailPage
 
 @pytest.mark.usefixtures("setUp")
 class TestProductDetailPage:
-    BASE_URL = "https://demowebshop.tricentis.com/"
 
     @pytest.fixture(autouse=True)
     def class_setUp(self):

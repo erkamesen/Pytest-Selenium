@@ -1,0 +1,4 @@
+scenario,query,expected
+negative,aa,Search term minimum length is 3 characters
+negative,aaa,No products were found that matched your criteria.
+positive,diamond,

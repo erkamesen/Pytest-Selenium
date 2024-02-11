@@ -10,5 +10,6 @@ def setUp(request):
         ChromeDriverManager().install()))
     driver.maximize_window()
     request.cls.driver = driver
-    yield
+    request.cls.BASE_URL = "https://demowebshop.tricentis.com/"
+    yield driver
     driver.quit()
