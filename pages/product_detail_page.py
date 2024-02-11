@@ -1,8 +1,9 @@
 from selenium.webdriver.common.by import By
 import time
+from pages.basepage import BasePage
 
 
-class DetailPage:
+class DetailPage(BasePage):
 
     CART_QUANTITY = (By.CSS_SELECTOR,
                      "span.cart-qty")
@@ -19,6 +20,7 @@ class DetailPage:
                     "div.product-name > h1")
 
     def __init__(self, driver):
+        super().__init__(driver)
         self.driver = driver
 
     def get_cart_items_count(self):
@@ -30,9 +32,9 @@ class DetailPage:
             *self.ADD_QUANTITY).get_attribute("value"))
 
     def click_add_to_cart_button(self):
-        self.driver.find_element(
-            *self.ADD_TO_CART_BUTTON
-        ).click()
+        add_to_cart_button = self.wait_element_visibility(
+            self.ADD_TO_CART_BUTTON)
+        add_to_cart_button.click()
         time.sleep(1.5)  # wait for cart increase
 
     def get_detail_page_product_price(self) -> str:
