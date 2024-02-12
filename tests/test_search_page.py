@@ -29,7 +29,7 @@ class TestSearchPage(unittest.TestCase):
         self.search_page.click_to_search_button()
 
         warning = self.search_page.get_search_warning_text()
-
+        print(f"Word: {word}\nExpected: {expected_message}\nActual: {warning}")
         assert warning == expected_message
 
     @data(*get_positive_datas(SEARCH_DATA_PATH))

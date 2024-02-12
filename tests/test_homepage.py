@@ -1,6 +1,6 @@
 import pytest
 from pages.homepage import HomePage
-from pages.product_detail_page import DetailPage
+from pages.detail_page import DetailPage
 import softest
 
 
@@ -10,8 +10,13 @@ class TestHomePage(softest.TestCase):
     @pytest.fixture(autouse=True)
     def class_setUp(self):
         self.homepage = HomePage(self.driver)
-        self.product_detail_page = DetailPage(self.driver)
+        self.detail_page = DetailPage(self.driver)
         self.driver.get(self.BASE_URL)
+
+    def test_community_poll_without_login(self):
+        self.homepage.make_poll()
+        text = self.homepage.get_poll_warning_text()
+        assert text == "Only registered users can vote."
 
     def test_top_menu_items(self):
         top_menu_items = self.homepage.get_top_menu_items()
@@ -31,9 +36,9 @@ class TestHomePage(softest.TestCase):
 
         self.homepage.click_first_product_link()
 
-        detail_page_product_text = self.product_detail_page.\
+        detail_page_product_text = self.detail_page.\
             get_detail_page_product_text()
-        detail_page_product_price = self.product_detail_page.\
+        detail_page_product_price = self.detail_page.\
             get_detail_page_product_price()
 
         self.soft_assert(self.assertEqual,

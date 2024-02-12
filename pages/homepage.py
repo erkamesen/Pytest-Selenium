@@ -1,26 +1,13 @@
-from selenium.webdriver.common.by import By
 from pages.basepage import BasePage
+import time
+from pages.locators.homepage_locators import HomePageLocators
 
 
-class HomePage(BasePage):
+class HomePage(BasePage, HomePageLocators):
     MENU_ITEMS = [
         "BOOKS", "COMPUTERS", "ELECTRONICS", "APPAREL & SHOES",
         "DIGITAL DOWNLOADS", "JEWELRY", "GIFT CARDS"
     ]
-
-    TOP_MENU_ITEMS = (By.CSS_SELECTOR,
-                      "ul.top-menu > li > a")
-    FIRST_PRODUCT_LINK = (By.CSS_SELECTOR,
-                          "h2.product-title > a")
-
-    FIRST_PRODUCT_PRICE = (By.CSS_SELECTOR,
-                           "span.actual-price")
-
-    FIRST_PRODUCT_THAT_IS_NOT_GIFT_CARD = (
-        By.XPATH,
-        "//div[@class='item-box']//h2/a[not(contains(text(), \
-                'Gift Card'))]"
-    )
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -51,3 +38,12 @@ class HomePage(BasePage):
             self.FIRST_PRODUCT_LINK
         )
         first_product.click()
+
+    def make_poll(self):
+        self.driver.find_element(*self.FIRST_POLL_ANSWER).click()
+        self.driver.find_element(*self.POLL_BUTTON).click()
+        time.sleep(1)
+
+    def get_poll_warning_text(self):
+        elem = self.driver.find_element(*self.POLL_ERROR)
+        return elem.text.strip()
