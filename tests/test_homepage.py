@@ -14,9 +14,16 @@ class TestHomePage(softest.TestCase):
         self.driver.get(self.BASE_URL)
 
     def test_community_poll_without_login(self):
+        self.driver.get(self.BASE_URL)
         self.homepage.make_poll()
         text = self.homepage.get_poll_warning_text()
         assert text == "Only registered users can vote."
+
+    def test_recently_viewed_products(self):
+        self.homepage.click_first_product_link()
+        self.driver.get(self.BASE_URL)
+        text = self.homepage.get_recently_viewed_product_text()
+        assert text == "$25 Virtual Gift Card"
 
     def test_top_menu_items(self):
         top_menu_items = self.homepage.get_top_menu_items()

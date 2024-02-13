@@ -47,3 +47,7 @@ class HomePage(BasePage, HomePageLocators):
     def get_poll_warning_text(self):
         elem = self.driver.find_element(*self.POLL_ERROR)
         return elem.text.strip()
+
+    def get_recently_viewed_product_text(self):
+        return self.driver.find_element(
+            *self.RECENTLY_VIEWED_ITEM).text.strip()

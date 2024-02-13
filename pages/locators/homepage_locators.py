@@ -1,7 +1,8 @@
 from selenium.webdriver.common.by import By
+from pages.locators.base_locators import BaseLocators
 
 
-class HomePageLocators:
+class HomePageLocators(BaseLocators):
 
     TOP_MENU_ITEMS = (By.CSS_SELECTOR,
                       "ul.top-menu > li > a")
@@ -26,3 +27,7 @@ class HomePageLocators:
 
     POLL_ERROR = (By.ID,
                   "block-poll-vote-error-1")
+
+    RECENTLY_VIEWED_ITEM = (
+        By.CSS_SELECTOR,
+        "div.block-recently-viewed-products a.product-name")

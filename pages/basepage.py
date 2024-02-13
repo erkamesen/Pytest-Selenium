@@ -23,3 +23,7 @@ class BasePage:
         WebDriverWait(self.driver, 20).until(
             expected_conditions.alert_is_present()
         )
+
+    def get_cart_items_count(self):
+        return int(self.driver.find_element(*self.CART_QUANTITY
+                                            ).text[1:-1])

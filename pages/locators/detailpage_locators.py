@@ -1,10 +1,8 @@
 from selenium.webdriver.common.by import By
+from pages.locators.base_locators import BaseLocators
 
 
-class DetailPageLocators:
-
-    CART_QUANTITY = (By.CSS_SELECTOR,
-                     "span.cart-qty")
+class DetailPageLocators(BaseLocators):
 
     ADD_QUANTITY = (By.ID,
                     "addtocart_31_EnteredQuantity")

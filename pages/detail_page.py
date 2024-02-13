@@ -9,10 +9,6 @@ class DetailPage(BasePage, DetailPageLocators):
         super().__init__(driver)
         self.driver = driver
 
-    def get_cart_items_count(self):
-        return int(self.driver.find_element(*self.CART_QUANTITY
-                                            ).text[1:-1])
-
     def get_quantity(self):
         return int(self.driver.find_element(
             *self.ADD_QUANTITY).get_attribute("value"))

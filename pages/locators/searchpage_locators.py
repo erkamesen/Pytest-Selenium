@@ -1,7 +1,8 @@
 from selenium.webdriver.common.by import By
+from pages.locators.base_locators import BaseLocators
 
 
-class SearchPageLocators:
+class SearchPageLocators(BaseLocators):
 
     SEARCH_BOX_INPUT = (By.CSS_SELECTOR,
                         "input[name='q']")

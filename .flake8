@@ -7,4 +7,5 @@ exclude =
     build,
     dist,
     venv,
+    __init__.py,
 max-complexity = 10

@@ -6,7 +6,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium import webdriver
 import datetime
-import getpass
+# import getpass
 
 
 @pytest.fixture(scope="class")
@@ -97,14 +97,12 @@ def pytest_configure(config):
     config.option.self_contained_html = True
 
 
-@pytest.fixture(scope="session", autouse=True)
-def configure_html_report_env(request, environment, browser):
-    request.config._metadata = dict()
-
-    request.config._metadata.update(
-        {
-            "user": getpass.getuser(),
-            "environment": environment,
-            "browser": browser,
-        }
-    )
+# @pytest.fixture(scope="session", autouse=True)
+# def configure_html_report_env(request, environment, browser):
+#     request.config._metadata.update(
+#         {
+#             "user": getpass.getuser(),
+#             "environment": environment,
+#             "browser": browser,
+#         }
+#     )
