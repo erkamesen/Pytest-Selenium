@@ -1,0 +1,3 @@
+scenario,email,password,expected
+negative,test@mail.com,testpass123,Log in
+positive,test123123@mail.com,asdasd123123,Log out

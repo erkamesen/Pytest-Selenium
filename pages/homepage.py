@@ -11,7 +11,6 @@ class HomePage(BasePage, HomePageLocators):
 
     def __init__(self, driver):
         super().__init__(driver)
-        self.driver = driver
 
     def get_top_menu_items(self) -> list:
         return self.driver.find_elements(*self.TOP_MENU_ITEMS)

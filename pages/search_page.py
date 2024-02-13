@@ -6,7 +6,6 @@ class SearchPage(BasePage, SearchPageLocators):
 
     def __init__(self, driver):
         super().__init__(driver)
-        self.driver = driver
 
     def make_search(self, word):
         search_box = self.driver.find_element(*self.SEARCH_BOX_INPUT)
